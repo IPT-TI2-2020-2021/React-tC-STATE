@@ -3,7 +3,7 @@
 // ***********************************************
 
 import React from 'react';
-import Tabela from './Tabela3';
+import Tabela from './Tabela4';
 
 
 /**
@@ -11,12 +11,12 @@ import Tabela from './Tabela3';
  */
 class App extends React.Component {
 
-  render() {
-
-    // definição de um 'repositório de dados'
-    // tem uma característica interessante: NÃO PODE ser alterado
-    // https://www.json.org/json-en.html
-    const alunos = [
+  // definição de um 'repositório de dados'
+  // tem uma característica interessante: estes PODEM ser alterados
+  // https://www.json.org/json-en.html
+  state = {
+    // dentro do STATE a igualdade é feita com :
+    alunos: [
       {
         "nome": "José",
         "apelido": "Lopes"
@@ -25,7 +25,15 @@ class App extends React.Component {
         "nome": "Maria",
         "apelido": "Silva"
       },
-    ];
+    ]
+  }
+
+
+
+  render() {
+    // ler os dados do repositório,
+    // para poderem ser aqui usados
+    const { alunos } = this.state;
 
     // este método É OBRIGATÓRIO
     return (

@@ -13,6 +13,7 @@ function CabecalhoTabela() {
             <tr>
                 <th>Nome</th>
                 <th>Apelido</th>
+                <th></th>
             </tr>
         </thead>
     );
@@ -33,6 +34,7 @@ const CorpoTabela = (props) => {
             <tr key={index}>
                 <td>{linha.nome}</td>
                 <td>{linha.apelido}</td>
+                <td>apagar</td>
             </tr>
         );
     }
@@ -45,7 +47,7 @@ const CorpoTabela = (props) => {
 /**
  * componente Tabela
  */
-class Tabela3 extends React.Component {
+class Tabela4 extends React.Component {
 
     render() {
         // ler os dados que foram/são fornecidos à Tabela3,
@@ -65,4 +67,4 @@ class Tabela3 extends React.Component {
     }
 }
 
-export default Tabela3;
+export default Tabela4;
