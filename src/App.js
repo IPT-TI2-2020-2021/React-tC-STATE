@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+// ***********************************************
+// app.js
+// ***********************************************
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React from 'react';
+import Tabela from './Tabela3';
+
+
+/**
+ * Componente 'principal' do meu projeto
+ */
+class App extends React.Component {
+
+  render() {
+
+    // definição de um 'repositório de dados'
+    // tem uma característica interessante: NÃO PODE ser alterado
+    // https://www.json.org/json-en.html
+    const alunos = [
+      {
+        "nome": "José",
+        "apelido": "Lopes"
+      },
+      {
+        "nome": "Maria",
+        "apelido": "Silva"
+      },
+    ];
+
+    // este método É OBRIGATÓRIO
+    return (
+      <div className="container">
+        <h1>Lista de Alunos</h1>
+        <div className="row">
+          <div className="col-4">
+            <h4>Tabela com acesso<br />a dados <i>props</i></h4>
+            {/* Tabela3 tem um 'parâmetro de entrada', chamado 'dadosAlunos'.
+                Neste caso, está a receber o array JSON com os dados dos alunos */}
+            <Tabela dadosAlunos={alunos} />
+          </div>
+        </div>
+      </div>
+    );
+
+  }
 }
+
+
 
 export default App;
