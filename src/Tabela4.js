@@ -1,5 +1,5 @@
 // *********************************
-// Tabela3.js
+// Tabela4.js
 // *********************************
 
 import React from 'react';
@@ -29,12 +29,18 @@ const CorpoTabela = (props) => {
     // vamos recuperar os dados do parâmetro de entrada: nomesDosAlunos
     //      -> é o que faz esta parte da instrução: props.nomesDosAlunos
     // o 'map' funciona como um 'foreach' que irá iterar todos os items dos dados lidos
-    const linhas = props.nomesDosAlunos.map((linha, index) => {
+    const linhas = props.inNomesDosAlunos.map((linha, index) => {
         return (
             <tr key={index}>
                 <td>{linha.nome}</td>
                 <td>{linha.apelido}</td>
-                <td>apagar</td>
+                <td>{/* o parâmetro 'outAlunoARemover' será usado para o
+                        componente <CorpoTabela /> exportar
+                        o ID do aluno a remover do STATE */}
+                    <button className="btn btn-danger"
+                        onClick={() => props.outAlunoARemover(index)}
+                    >apagar</button>
+                </td>
             </tr>
         );
     }
@@ -50,18 +56,20 @@ const CorpoTabela = (props) => {
 class Tabela4 extends React.Component {
 
     render() {
-        // ler os dados que foram/são fornecidos à Tabela3,
-        // como parâmetro de entrada
-        const { dadosAlunos } = this.props;
+        // ler os dados que foram/são fornecidos à Tabela4,
+        // como parâmetro de entrada/saída
+        const { inDadosAlunos,
+                outAlunoQueQueroRemover } = this.props;
 
         return (
             <table className="table">
                 <CabecalhoTabela />
-                {/* CorpoTabela tem um 'parâmetro de entrada', chamado 'nomesDosAlunos'.
+                {/* CorpoTabela tem um 'parâmetro de entrada', chamado 'inNomesDosAlunos'.
                     Apesar do nome do parâmetro ser diferente do atribuído à Tabela3,
                     a sua função é igual.
                 */}
-                <CorpoTabela nomesDosAlunos={dadosAlunos} />
+                <CorpoTabela inNomesDosAlunos={inDadosAlunos}
+                             outAlunoARemover={outAlunoQueQueroRemover} />
             </table>
         );
     }

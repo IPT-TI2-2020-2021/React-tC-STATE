@@ -28,7 +28,23 @@ class App extends React.Component {
     ]
   }
 
+  /**
+   * função que irá retirar o aluno do array criado pelo STATE
+   * @param {*} idDoAlunoARemover - id do aluno selecionado na tabela
+   */
+  removeAluno = (idDoAlunoARemover) => {
+    // quero manipular o STATE
+    // recuperar os dados do State
+    const { alunos } = this.state;
+    // alterar os dados do STATE
+    this.setState({
+      alunos: alunos.filter((aluno, indiceDoAluno) => {
+        return indiceDoAluno !== idDoAlunoARemover
+      })
+    });
 
+
+  }
 
   render() {
     // ler os dados do repositório,
@@ -41,10 +57,11 @@ class App extends React.Component {
         <h1>Lista de Alunos</h1>
         <div className="row">
           <div className="col-4">
-            <h4>Tabela com acesso<br />a dados <i>props</i></h4>
-            {/* Tabela3 tem um 'parâmetro de entrada', chamado 'dadosAlunos'.
+            <h4>Tabela com acesso<br />a dados <i>state</i></h4>
+            {/* Tabela3 tem um 'parâmetro de entrada', chamado 'inDadosAlunos'.
                 Neste caso, está a receber o array JSON com os dados dos alunos */}
-            <Tabela dadosAlunos={alunos} />
+            <Tabela inDadosAlunos={alunos}
+                    outAlunoQueQueroRemover={this.removeAluno} />
           </div>
         </div>
       </div>
